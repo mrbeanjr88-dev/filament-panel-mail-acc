@@ -3,16 +3,21 @@
 namespace App\Services\Imap;
 
 use App\Models\EmailAccount;
+use App\Services\OAuth\OAuthTokenService;
 use Webklex\IMAP\Facades\Client as ClientManager;
 use Webklex\PHPIMAP\Client;
 
-/**
- * Construiește clienți IMAP DINAMIC din rândurile EmailAccount (nu din config static).
- */
 class ImapClientFactory
 {
     public function for(EmailAccount $account): Client
     {
+        $password = $account->password;
+
+        if ($account->authentication === 'oauth') {
+            $oauthService = app(OAuthTokenService::class);
+            $password = $oauthService->ensureValidToken($account);
+        }
+
         /** @var Client $client */
         $client = ClientManager::make([
             'host'           => $account->host,
@@ -21,7 +26,7 @@ class ImapClientFactory
             'encryption'     => $this->normalizeEncryption($account->encryption),
             'validate_cert'  => (bool) $account->validate_cert,
             'username'       => $account->username,
-            'password'       => $account->password,
+            'password'       => $password,
             'authentication' => $account->authentication ?: null,
             'timeout'        => 30,
         ]);
@@ -37,7 +42,7 @@ class ImapClientFactory
             'ssl'      => 'ssl',
             'tls'      => 'tls',
             'starttls' => 'starttls',
-            default    => false, // 'none' / gol
+            default    => false,
         };
     }
 }
