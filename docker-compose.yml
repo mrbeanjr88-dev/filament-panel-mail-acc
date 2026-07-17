@@ -1,0 +1,83 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: email-customs-app
+    ports:
+      - "8000:8000"
+    environment:
+      APP_NAME: "Email Customs"
+      APP_ENV: production
+      APP_DEBUG: 'false'
+      APP_KEY: ${APP_KEY}
+      DB_CONNECTION: pgsql
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_DATABASE: ${DB_DATABASE:-email_customs}
+      DB_USERNAME: ${DB_USERNAME:-postgres}
+      DB_PASSWORD: ${DB_PASSWORD:-password}
+      CACHE_DRIVER: redis
+      CACHE_STORE: redis
+      QUEUE_CONNECTION: database
+      REDIS_HOST: redis
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-null}
+      REDIS_PORT: 6379
+      LOG_CHANNEL: stack
+      LOG_SLACK_WEBHOOK_URL: ${LOG_SLACK_WEBHOOK_URL}
+    volumes:
+      - ./storage/logs:/app/storage/logs
+      - ./storage/app/attachments:/app/storage/app/attachments
+    depends_on:
+      - db
+      - redis
+    networks:
+      - email-customs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  db:
+    image: postgres:15-alpine
+    container_name: email-customs-db
+    environment:
+      POSTGRES_DB: ${DB_DATABASE:-email_customs}
+      POSTGRES_USER: ${DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-password}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - email-customs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USERNAME:-postgres}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: email-customs-redis
+    command: redis-server --requirepass ${REDIS_PASSWORD:-null}
+    volumes:
+      - redis_data:/data
+    networks:
+      - email-customs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  email-customs:
+    driver: bridge

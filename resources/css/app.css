@@ -1,0 +1,52 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* ── Sidebar tweaks ──────────────────────────────────────────────── */
+.fi-sidebar {
+    border-right-width: 1px;
+}
+
+/* ── Table row hover — subtler transition ────────────────────────── */
+.fi-ta-row {
+    transition: background-color 150ms ease;
+}
+
+/* ── Badge refinements ───────────────────────────────────────────── */
+.fi-badge {
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+/* ── Stats card subtle shadow ────────────────────────────────────── */
+.fi-wi-stats-overview-stat {
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.04);
+}
+
+/* ── Sticky table header ─────────────────────────────────────────── */
+.fi-ta-header-cell {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    backdrop-filter: blur(4px);
+}
+
+/* ── Action buttons — tighter gap on mobile ──────────────────────── */
+@media (max-width: 640px) {
+    .fi-ta-actions {
+        gap: 0.25rem;
+    }
+}
+
+/* ── Page header — subtle bottom border ──────────────────────────── */
+.fi-header {
+    border-bottom-width: 1px;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+}
