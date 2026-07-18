@@ -26,11 +26,10 @@
         }
 
         .main {
-            flex: 1;
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            padding: 198px 20px 40px;
+            padding: 198px 20px 169px;
         }
 
         .card {

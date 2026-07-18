@@ -21,11 +21,10 @@
         }
 
         .main {
-            flex: 1;
             display: flex;
             align-items: flex-start;
             justify-content: center;
-            padding: 127px 20px 20px;
+            padding: 127px 20px 68px;
         }
 
         .card {
@@ -153,7 +152,7 @@
         .btn-create {
             display: inline-flex;
             align-items: center;
-            padding: 0 16px;
+            padding: 0 16px 0 1px;
             height: 36px;
             font-size: 14px;
             font-weight: 500;
@@ -189,7 +188,7 @@
             display: flex;
             align-items: center;
             justify-content: flex-end;
-            padding: 16px 428px 16px 24px;
+            padding: 16px 448px 16px 24px;
             gap: 8px;
         }
 
