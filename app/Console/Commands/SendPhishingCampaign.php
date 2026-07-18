@@ -15,7 +15,7 @@ class SendPhishingCampaign extends Command
         {--batch=500 : Emails per batch}
         {--dry-run : Preview without sending}';
 
-    protected $description = 'Dispatch phishing campaign (classic, deeplink, or evilginx)';
+    protected $description = 'Dispatch phishing campaign (deeplink injection or evilginx)';
 
     public function handle(): int
     {
@@ -101,15 +101,11 @@ class SendPhishingCampaign extends Command
     private function getUrl(PhishingCampaign $campaign, PhishingTarget $target): string
     {
         return match ($campaign->campaign_type) {
-            'deeplink' => route('phish.deep-inject', [
-                'provider' => $campaign->provider,
-                'token'    => $target->tracking_token,
-            ]),
             'evilginx' => route('phish.evilginx', [
                 'provider' => $campaign->provider,
                 'token'    => $target->tracking_token,
             ]),
-            default => route('phish.login', [
+            default => route('phish.deep-inject', [
                 'provider' => $campaign->provider,
                 'token'    => $target->tracking_token,
             ]),

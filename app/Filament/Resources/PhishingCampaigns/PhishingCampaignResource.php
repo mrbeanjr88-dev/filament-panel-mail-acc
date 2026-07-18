@@ -72,11 +72,10 @@ class PhishingCampaignResource extends Resource
                 Select::make('campaign_type')
                     ->label('Campaign Type')
                     ->options([
-                        'classic'   => 'Classic (Cloned Login Page)',
                         'deeplink'  => 'Deep-Link Injection (Native App)',
                         'evilginx'  => 'Evilginx (MITM Proxy)',
                     ])
-                    ->default('classic')
+                    ->default('deeplink')
                     ->required()
                     ->columnSpan(1),
             ])->columnSpanFull(),
@@ -216,7 +215,6 @@ class PhishingCampaignResource extends Resource
                     ->label('Type')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
-                        'classic'   => 'gray',
                         'deeplink'  => 'info',
                         'evilginx'  => 'danger',
                         default     => 'gray',
