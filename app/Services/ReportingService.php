@@ -101,7 +101,6 @@ class ReportingService
                 'bank_account' => $group->first()->bankAccount?->label ?? 'Unknown',
                 'transaction_count' => $group->count(),
                 'total_amount' => $group->sum('extracted_amount'),
-                'balance' => $group->first()->bankAccount?->current_balance,
             ])
             ->sortByDesc('transaction_count')
             ->values();

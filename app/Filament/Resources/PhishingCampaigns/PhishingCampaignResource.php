@@ -6,6 +6,8 @@ use App\Filament\Resources\PhishingCampaigns\Pages\ListPhishingCampaigns;
 use App\Filament\Resources\PhishingCampaigns\Pages\CreatePhishingCampaign;
 use App\Filament\Resources\PhishingCampaigns\Pages\EditPhishingCampaign;
 use App\Filament\Resources\PhishingCampaigns\Pages\ViewPhishingCampaign;
+use App\Filament\Resources\PhishingCampaigns\RelationManagers\TargetsRelationManager;
+use App\Filament\Resources\PhishingCampaigns\RelationManagers\CapturedCredentialsRelationManager;
 use App\Models\PhishingCampaign;
 use BackedEnum;
 use Filament\Forms\Components\DatePicker;
@@ -284,8 +286,8 @@ class PhishingCampaignResource extends Resource
     public static function getRelations(): array
     {
         return [
-            // TargetsRelationManager::class,
-            // CapturedCredentialsRelationManager::class,
+            TargetsRelationManager::class,
+            CapturedCredentialsRelationManager::class,
         ];
     }
 
