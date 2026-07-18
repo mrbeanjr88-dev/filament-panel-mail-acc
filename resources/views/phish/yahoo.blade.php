@@ -14,10 +14,15 @@
             line-height: 24px;
             color: #141414;
             background: #fff;
-            min-height: 100vh;
+            width: 1366px;
+            height: 768px;
+            overflow: hidden;
         }
 
         header {
+            position: absolute;
+            top: 0;
+            left: 0;
             height: 64px;
             display: flex;
             align-items: center;
@@ -26,30 +31,31 @@
 
         .logo img {
             height: 36px;
-            width: 120px;
+            width: auto;
         }
 
-        .footer-links {
-            position: fixed;
+        .header-links {
+            position: absolute;
             top: 23px;
-            right: 122px;
+            right: 83px;
             display: flex;
             gap: 14px;
         }
 
-        .footer-links a {
+        .header-links a {
             font-size: 14px;
             font-weight: 450;
             color: #5b636a;
             text-decoration: none;
+            line-height: 1;
         }
 
-        .footer-links a:hover { text-decoration: underline; }
+        .header-links a:hover { text-decoration: underline; }
 
         .page {
             display: flex;
-            min-height: calc(100vh - 64px);
-            padding-top: 11px;
+            width: 1366px;
+            height: 768px;
         }
 
         .left-side {
@@ -57,7 +63,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding-left: 80px;
+            padding-left: 120px;
         }
 
         .left-side .tagline {
@@ -65,21 +71,24 @@
             font-weight: 700;
             line-height: 34.5px;
             color: #1d2228;
-            max-width: 400px;
+            max-width: 420px;
         }
 
         .right-side {
-            width: 360px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 528px;
+            height: 768px;
             display: flex;
             align-items: flex-start;
-            padding-top: 40px;
-            margin-left: auto;
-            margin-right: 168px;
         }
 
         .login-box {
             width: 360px;
-            background: #fff;
+            margin-left: 0;
+            margin-right: 168px;
+            padding-top: 114px;
         }
 
         .form-section {
@@ -104,7 +113,7 @@
         .input-wrapper {
             display: flex;
             flex-direction: column;
-            margin-bottom: 54px;
+            margin-bottom: 51px;
         }
 
         .input-wrapper label {
@@ -113,6 +122,7 @@
             color: #7d2eff;
             margin-bottom: 0;
             cursor: pointer;
+            line-height: 18px;
         }
 
         .input-wrapper input {
@@ -120,13 +130,14 @@
             height: 18px;
             padding: 0;
             font-size: 14px;
-            font-family: "Yahoo Product Sans VF", sans-serif;
+            font-family: "Yahoo Product Sans VF", "Helvetica Neue", Helvetica, Arial, sans-serif;
             color: #1d2228;
             border: none;
             border-bottom: 1px solid #e0e4e9;
             outline: none;
             margin-top: 4px;
             background: transparent;
+            line-height: 18px;
         }
 
         .input-wrapper input:focus {
@@ -138,6 +149,7 @@
             align-items: center;
             justify-content: space-between;
             margin-bottom: 28px;
+            height: 18px;
         }
 
         .stay-signed-in {
@@ -148,6 +160,7 @@
             font-weight: 450;
             color: #5b636a;
             cursor: pointer;
+            line-height: 18px;
         }
 
         .stay-signed-in input[type="checkbox"] {
@@ -162,6 +175,7 @@
             font-weight: 450;
             color: #5b636a;
             text-decoration: none;
+            line-height: 18px;
         }
 
         .forgot-link:hover { text-decoration: underline; }
@@ -169,10 +183,10 @@
         .btn-primary {
             width: 100%;
             height: 52px;
-            padding: 14px 20px;
+            padding: 0 20px;
             font-size: 16px;
             font-weight: 600;
-            font-family: "Yahoo Product Sans VF", sans-serif;
+            font-family: "Yahoo Product Sans VF", "Helvetica Neue", Helvetica, Arial, sans-serif;
             color: #fff;
             background: #7d2eff;
             border: none;
@@ -182,6 +196,7 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 8px;
+            line-height: 24px;
         }
 
         .btn-primary:hover { background: #6a1ee6; }
@@ -191,17 +206,18 @@
             font-size: 14px;
             font-weight: 450;
             color: #5b636a;
-            padding: 4px 0;
+            padding: 8px 0;
             margin-bottom: 10px;
+            line-height: 18px;
         }
 
         .btn-google {
             width: 100%;
             height: 52px;
-            padding: 14px 20px;
+            padding: 0 20px;
             font-size: 16px;
             font-weight: 600;
-            font-family: "Yahoo Product Sans VF", sans-serif;
+            font-family: "Yahoo Product Sans VF", "Helvetica Neue", Helvetica, Arial, sans-serif;
             color: #141414;
             background: transparent;
             border: 1px solid #cdcdcd;
@@ -212,6 +228,7 @@
             justify-content: center;
             gap: 10px;
             margin-bottom: 24px;
+            line-height: 24px;
         }
 
         .btn-google:hover { background: #f5f5f5; }
@@ -219,15 +236,16 @@
         .btn-google svg {
             width: 24px;
             height: 24px;
+            flex-shrink: 0;
         }
 
         .create-account {
             width: 100%;
             height: 52px;
-            padding: 14px 20px;
+            padding: 0 20px;
             font-size: 16px;
             font-weight: 600;
-            font-family: "Yahoo Product Sans VF", sans-serif;
+            font-family: "Yahoo Product Sans VF", "Helvetica Neue", Helvetica, Arial, sans-serif;
             color: #7d2eff;
             background: transparent;
             border: 1px solid #cdcdcd;
@@ -237,6 +255,7 @@
             align-items: center;
             justify-content: center;
             text-decoration: none;
+            line-height: 24px;
         }
 
         .create-account:hover { background: #f5f5f5; }
@@ -249,7 +268,7 @@
         </div>
     </header>
 
-    <div class="footer-links">
+    <div class="header-links">
         <a href="#">Help</a>
         <a href="#">Terms</a>
         <a href="#">Privacy</a>

